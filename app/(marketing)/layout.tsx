@@ -1,9 +1,10 @@
 import MainNav from "@/components/main-nav";
+import SiteFooter from "@/components/site-footer";
 import { buttonVariants } from "@/components/ui/button";
 import { marketingConfig } from "@/config/marketing";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import React from "react"
+import React from "react";
 
 export default function MarketingLayout({
   children,
@@ -18,8 +19,7 @@ export default function MarketingLayout({
           <nav>
             <Link
               href={"/login"}
-              className={cn(buttonVariants({ variant: "secondary", size: "sm" }),
-                "px-4")}
+              className={cn(buttonVariants({ variant: "secondary", size: "sm" }), "px-4")}
             >
               ログイン
             </Link>
@@ -27,6 +27,7 @@ export default function MarketingLayout({
         </div>
       </header>
       <main>{children}</main>
+      <SiteFooter />
     </div>
-  )
+  );
 }
