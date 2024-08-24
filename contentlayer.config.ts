@@ -4,6 +4,7 @@ import { defineDocumentType, makeSource } from "contentlayer/source-files";
 export const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: `blog/**/*.mdx`,
+  contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     description: { type: "string" },
@@ -11,10 +12,6 @@ export const Post = defineDocumentType(() => ({
     published: { type: "boolean", default: true },
     image: { type: "string", required: true },
     authors: {
-      // Reference types are not embedded.
-      // Until this is fixed, we can use a simple list.
-      // type: "reference",
-      // of: Author,
       type: "list",
       of: { type: "string" },
       required: true,
@@ -24,6 +21,10 @@ export const Post = defineDocumentType(() => ({
     slug: {
       type: "string",
       resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    },
+    slugAsParams: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.split("/").splice(1)[0],
     },
   },
 }));
