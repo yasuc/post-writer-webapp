@@ -19,7 +19,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const page = getPostFromSlug(params.slug);
+  const page = await getPostFromSlug(params.slug);
 
   if (!page) {
     return {};
@@ -34,6 +34,7 @@ export async function generateMetadata({
     },
   };
 }
+
 export default async function PostPage({ params }: { params: { slug: string } }) {
   const slug = params.slug;
   const post = await getPostFromSlug(slug);
