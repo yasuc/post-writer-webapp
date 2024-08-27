@@ -1,8 +1,8 @@
 "use client";
 
-import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 import Callout from "./callout";
+import { useMDXComponent } from "next-contentlayer2/hooks";
 
 const components = {
   Image,
